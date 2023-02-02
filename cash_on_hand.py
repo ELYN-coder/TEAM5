@@ -2,7 +2,7 @@
 from pathlib import Path
 import csv
 
-# define function for Cash on Hand
+# create function for Cash on Hand
 def coh_function():
     """
     - This function reads data from the Overheads csv file and write into summary report text file
@@ -19,14 +19,20 @@ def coh_function():
 
     # read the data from the csv file
     with fp_read.open(mode="r", encoding="UTF-8", newline="") as file:
+        # create csv reader object using csv
         reader = csv.reader(file)
-
-        next(reader) # skip the header row
+        # use next() function to skip the header
+        next(reader) 
+        # iterate each row with loop
         for row in reader:
+            # access to first sub-list, day, by indexing with [inner key]
             day = row[0]
-            cos = int(row[1]) # cast string to integer
+            # access to second sub-list, cash on hand, by indexing with [inner key]
+            # cast string to integer
+            cos = int(row[1]) 
 
-            cash_on_hand.append([day, cos]) # add current row to the list
+            # use .append() to add current row to the list
+            cash_on_hand.append([day, cos]) 
 
     # calculate the total number of rows
     total_row = len(cash_on_hand)
@@ -45,7 +51,7 @@ def coh_function():
         # extract coh amount from previous day
         yesterday_coh = yesterday[1]
 
-        # check if previous day's coh is greater than current day's coh
+        # use if statement to check if previous day's coh is greater than current day's coh
         if yesterday_coh > today_coh:
             day = today[0]
             # calculation of difference in coh
@@ -54,7 +60,7 @@ def coh_function():
             # putting into the list created under deficits
             deficits.append([day, different])
     
-    
+    # use mode ="a" to append data to file
     with fp_write.open(mode="a", encoding="UTF-8", newline="") as file:
 
         # write data into the file
