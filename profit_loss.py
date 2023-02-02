@@ -19,14 +19,20 @@ def profitloss_function():
 
     # read data from the csv file
     with fp_read.open(mode="r", encoding="UTF-8", newline="") as file:
+        # create csv reader object using csv 
         reader = csv.reader(file)
-
-        next(reader) # skip the header row
+        # use next() function to skip the header 
+        next(reader) 
+        # iterate each row with loop 
         for row in reader:
+            # access to first sub-list, day, by indexing with [inner key]
             day = row[0]
-            net_profit = int(row[4]) # cast string to integer
+            # access to fourth sub-list, net profit, by indexing with [inner key]
+            # cast string to integer
+            net_profit = int(row[4]) 
 
-            profit_loss.append([day, net_profit]) # add current row to the list
+            # use .append() to add current row to the list
+            profit_loss.append([day, net_profit]) 
 
     # calculate total number of rows
     total_row = len(profit_loss)
@@ -35,9 +41,9 @@ def profitloss_function():
     # need at least 2 days of data for comparison to find the difference
     for i in range(1, total_row):
 
-        # extract the current day of PL
+        # extract the current day of profit and loss
         today = profit_loss[i]
-        # extract the previous day of PL
+        # extract the previous day of profit and loss
         yesterday = profit_loss[i-1]
 
         # extract the PL amount from the current day
@@ -45,7 +51,7 @@ def profitloss_function():
         # extract the PL amount from the previous day
         yesterday_pl = yesterday[1]
 
-        # check if today PL is lesser than yesterday PL
+        # use if statement to check if today PL is lesser than yesterday PL
         if today_pl < yesterday_pl:
             day = today[0]
             # calculation of difference in loss
@@ -54,6 +60,7 @@ def profitloss_function():
             # putting into the list created under net
             net.append([day, different])
 
+    # use mode = "a" to append data to file
     with fp_write.open(mode="a", encoding="UTF-8", newline="") as file:
 
         # write the data into the file
