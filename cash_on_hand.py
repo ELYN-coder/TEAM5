@@ -5,7 +5,7 @@ import csv
 # create function for Cash on Hand
 def coh_function():
     """
-    - This function reads data from the Overheads csv file and write into summary report text file
+    - This function reads data from the Cash On Hand csv file and write into summary report text file
     - It will find difference in Cash on Hand if current day is lower than previous day
     """
     
@@ -14,7 +14,9 @@ def coh_function():
     deficits = []
 
     # file path (both csv file and the summary report file)
+    # setup file path for reading 
     fp_read = Path.cwd()/"TEAM5"/"csv_reports"/"Cash on Hand.csv"
+    # create a path object for summary_report.txt
     fp_write = Path.cwd()/"TEAM5"/"summary_report.txt"
 
     # read the data from the csv file
@@ -60,7 +62,7 @@ def coh_function():
             # putting into the list created under deficits
             deficits.append([day, different])
     
-    # use mode ="a" to append data to file
+    # use mode = "a" to append data to file
     with fp_write.open(mode="a", encoding="UTF-8", newline="") as file:
 
         # write data into the file
