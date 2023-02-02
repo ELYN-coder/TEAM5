@@ -25,20 +25,26 @@ def overheads_function():
     with fp_read.open(mode="r", encoding="UTF-8", newline="") as file:
         reader = csv.reader(file)
 
-        next(reader) # skip the header row 
+        # use next() to skip header 
+        next(reader) 
         for row in reader:
             category = row[0]
-            overheads_amount = float(row[1]) # cast string to float
+            # cast string to float 
+            overheads_amount = float(row[1]) 
 
-            overheads.append([category, overheads_amount]) # add current row to the lsit
+            # add current row to the list 
+            overheads.append([category, overheads_amount]) 
     
-    for detail in overheads: # detail refer to the overheads for each category
-        overhead = detail[1] # extracting the percentage of the overheads
+    # using for loop to repeat the detail in overheads
+    # detail refer to the overheads for each category
+    for detail in overheads: 
+        # extracting the percentage of the overheads
+        overhead = detail[1] 
 
-        if overhead > highest['Overheads']: # if the current overheads percentage is higher
+        # if the current overheads percentage is higher
+        if overhead > highest['Overheads']: 
 
-
-           # a dictionary to overwrite the previous data if conditions are met 
+           # create a dictionary to overwrite the previous data if conditions are met 
             highest = {
                 'Category': detail[0],
                 'Overheads': detail[1]
@@ -46,5 +52,6 @@ def overheads_function():
     
     
     # write result to the summary report text file
+    # use mode = "a" to append data to file
     with fp_write.open(mode="a", encoding="UTF-8", newline="") as file:
         file.write(f"[HIGHEST OVERHEADS] {highest['Category']}: {highest['Overheads']}%\n")
