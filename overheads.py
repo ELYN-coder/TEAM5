@@ -23,12 +23,15 @@ def overheads_function():
 
     # read the data from the csv file
     with fp_read.open(mode="r", encoding="UTF-8", newline="") as file:
+        # create csv reader object using csv
         reader = csv.reader(file)
-
         # use next() to skip header 
         next(reader) 
+        # iterate each row with loop 
         for row in reader:
+            # access to first sub-list, category, by indexing with [inner key]
             category = row[0]
+            # access to second sub-list, overheads, by indexing with [inner key]
             # cast string to float 
             overheads_amount = float(row[1]) 
 
