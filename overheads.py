@@ -18,7 +18,9 @@ def overheads_function():
     }
 
     # file path (both csv file and the summary report file)
+    # setup file path for reading
     fp_read = Path.cwd()/"TEAM5"/"csv_reports"/"Overheads.csv"
+    # create a path object for summary_report.txt
     fp_write = Path.cwd()/"TEAM5"/"summary_report.txt"
 
     # read the data from the csv file
