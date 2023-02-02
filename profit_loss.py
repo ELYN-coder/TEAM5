@@ -14,7 +14,9 @@ def profitloss_function():
     net = []
 
     # file path (both csv file and the summary report file)
+    # setup file path for reading 
     fp_read = Path.cwd()/"TEAM5"/"csv_reports"/"Profits and Loss.csv"
+    # create a path object for summary_report.txt
     fp_write = Path.cwd()/"TEAM5"/"summary_report.txt"
 
     # read data from the csv file
