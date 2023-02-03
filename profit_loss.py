@@ -72,3 +72,7 @@ def profitloss_function():
             
             # write result to the summary report file
             file.write(f"[PROFIT DEFICIT] DAY: {day}, AMOUNT: USD{amount}\n")
+            
+            
+            if 0 == len(net):
+                file.write('[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY\n')
