@@ -72,3 +72,7 @@ def coh_function():
 
             # write the deficit to summary report text file
             file.write(f"[CASH DEFICIT] DAY: {day}, AMOUNT: USD{amount}\n")
+            
+            
+            if 0 == len(deficits):
+                file.write("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY\n")
