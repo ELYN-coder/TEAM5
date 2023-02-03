@@ -73,6 +73,11 @@ def coh_function():
             # write the deficit to summary report text file
             file.write(f"[CASH DEFICIT] DAY: {day}, AMOUNT: USD{amount}\n")
             
-            
+            # data type of deficits is a list
+            # len(deficits) is telling the computer to return the total number of item in the deficits list
+            # == sign are used to check if both left and right variables are equal
+            # 0 == len(deficits) means if 0 is equal to the total number of item in the deficits list
+            # if there are nothing in the deficits list means no deficit
+            # hence simply printing the following message is sufficient enough
             if 0 == len(deficits):
                 file.write("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY\n")
